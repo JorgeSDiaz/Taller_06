@@ -15,9 +15,9 @@ import static spark.Spark.port;
 
 public class AppLbRoundRobin {
     private static final List<Server> servers = List.of(
-            new Server("log-service-1", "http://log-service-1:6000"),
-            new Server("log-service-2", "http://log-service-2:6000"),
-            new Server("log-service-3", "http://log-service-3:6000"));
+            new Server("log-service-1", "http://172.31.57.116:35001"),
+            new Server("log-service-2", "http://172.31.5.194:35002"),
+            new Server("log-service-3", "http://172.31.14.214:35003"));
     private static int currentServer = 0;
 
     public static void main(String[] args) {
