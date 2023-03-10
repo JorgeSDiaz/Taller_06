@@ -22,38 +22,36 @@ public class AppLbRoundRobin {
 
     public static void main(String[] args) {
         port(getPort());
-        get("/hello", (request, response) -> Files.readAllBytes(Path.of("src/main/resources/index.html")));
-//        get("/", (request, response) -> """
-//                <!DOCTYPE html>
-//                <html>
-//                  <head>
-//                    <link rel="icon" href="data:,">
-//                    <title>Form Example</title>
-//                    <meta charset="UTF-8" />
-//                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-//                  </head>
-//                  <body>
-//                    <h1>Form with GET</h1>
-//                    <form action="/json">
-//                      <label for="name">Name:</label><br/>
-//                      <input type="text" id="name" name="name" value="london" /><br /><br />
-//                      <input type="button" value="Submit" onclick="loadGetMsg()"/>
-//                    </form>
-//                    <div id="getrespmsg"></div>
-//
-//                    <script>
-//                      function loadGetMsg(){
-//                        let name = document.getElementById("name");
-//                        let url = "/json?q=" + name.value;
-//                        console.log(url);
-//                        fetch(url, { method: "GET" })
-//                          .then((x) => x.text())
-//                          .then((y) => (document.getElementById("getrespmsg").innerHTML = y));
-//                      }
-//                    </script>
-//                  </body>
-//                </html>
-//                """);
+//        get("/hello", (request, response) -> Files.readAllBytes(Path.of("src/main/resources/index.html")));
+        get("/", (request, response) -> "<!DOCTYPE html>\n" +
+                "//                <html>\n" +
+                "//                  <head>\n" +
+                "//                    <link rel=\"icon\" href=\"data:,\">\n" +
+                "//                    <title>Form Example</title>\n" +
+                "//                    <meta charset=\"UTF-8\" />\n" +
+                "//                    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n" +
+                "//                  </head>\n" +
+                "//                  <body>\n" +
+                "//                    <h1>Form with GET</h1>\n" +
+                "//                    <form action=\"/json\">\n" +
+                "//                      <label for=\"name\">Name:</label><br/>\n" +
+                "//                      <input type=\"text\" id=\"name\" name=\"name\" value=\"london\" /><br /><br />\n" +
+                "//                      <input type=\"button\" value=\"Submit\" onclick=\"loadGetMsg()\"/>\n" +
+                "//                    </form>\n" +
+                "//                    <div id=\"getrespmsg\"></div>\n" +
+                "//\n" +
+                "//                    <script>\n" +
+                "//                      function loadGetMsg(){\n" +
+                "//                        let name = document.getElementById(\"name\");\n" +
+                "//                        let url = \"/json?q=\" + name.value;\n" +
+                "//                        console.log(url);\n" +
+                "//                        fetch(url, { method: \"GET\" })\n" +
+                "//                          .then((x) => x.text())\n" +
+                "//                          .then((y) => (document.getElementById(\"getrespmsg\").innerHTML = y));\n" +
+                "//                      }\n" +
+                "//                    </script>\n" +
+                "//                  </body>\n" +
+                "//                </html>");
         get("/json", ((request, response) -> {
             response.type("application/json");
             URL obj = new URL(getNextServer() +
